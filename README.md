@@ -1,6 +1,6 @@
 # Keepsake
 
-An Astro + React keepsake studio using the Omarchy Vantablack palette. Add a name and optionally preview a photo; the photo stays on-device and unchanged. The name is exported on a separate, clearly personal card—not printed over the uploaded photo.
+An Astro + React image editor using the Omarchy Vantablack palette. Add a name directly to a JPG, PNG, or WebP image, choose its typeface, weight, size, and color, then drag it into place. The original file remains unchanged; export creates a full-resolution PNG locally in your browser.
 
 ## Run locally
 
