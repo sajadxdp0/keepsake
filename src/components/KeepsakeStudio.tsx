@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type ChangeEvent, type DragEvent as ReactDragEvent, type PointerEvent as ReactPointerEvent, type KeyboardEvent } from "react";
+import KeepsakeBackdrop from "@/components/KeepsakeBackdrop";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -219,40 +220,26 @@ export default function KeepsakeStudio() {
   }
 
   return (
-      <>
-      <div aria-hidden="true" className="wallpaper-scene">
-        <div className="wallpaper-glow wallpaper-glow-a" />
-        <div className="wallpaper-glow wallpaper-glow-b" />
-        <pre className="wallpaper-ascii">
-{String.raw`       .             .       ·                       .
-                  .                   .
-           /\                  .                 ·
-          /  \        .                 .
-         /    \                   .               
-   _____/______\__________      .
-   \______________________/         
- ~~~~~~~~~~~ ~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~
-      ·         .          ·                  .`}
-        </pre>
-      </div>
-    <main className="relative z-10 mx-auto min-h-screen max-w-6xl px-5 pb-8 sm:px-8">
-      <header className="flex h-[68px] items-center justify-between border-b border-border">
+    <>
+      <KeepsakeBackdrop />
+      <main className="relative z-10 mx-auto min-h-screen max-w-6xl px-5 pb-10 sm:px-8">
+      <header className="flex h-[72px] items-center border-b border-white/10">
         <a href="#top" className="flex items-center gap-3 font-sans text-sm font-medium tracking-tight text-foreground">
           <img src="/keepsake-mark.svg" width="32" height="32" alt="" className="size-8" />
           <span>Keepsake</span>
         </a>
       </header>
 
-      <section id="top" className="py-9 sm:py-12">
+      <section id="top" className="py-10 sm:py-14">
         <div>
-          <h1 className="font-sans text-3xl font-medium leading-tight tracking-[-0.045em] text-foreground sm:text-4xl">
+          <h1 className="font-sans text-4xl font-medium leading-[1.08] tracking-[-0.05em] text-foreground sm:text-5xl">
             Add a name to your image.
           </h1>
         </div>
       </section>
 
       <section className="grid gap-6 lg:grid-cols-[300px_minmax(0,1fr)]" aria-label="Image editor">
-        <aside className="border border-border bg-card p-5 backdrop-blur-[22px] sm:p-6">
+        <aside className="rounded-2xl border border-white/10 bg-card p-5 shadow-[0_24px_80px_rgba(0,0,0,0.3)] backdrop-blur-[22px] sm:p-6">
           <div className="mb-6">
             <label htmlFor="name" className="mb-2 block font-mono text-[9px] tracking-[0.12em] text-muted-foreground">NAME</label>
             <Input
@@ -271,7 +258,7 @@ export default function KeepsakeStudio() {
               id="font-style"
               value={fontStyle}
               onChange={(event) => setFontStyle(event.target.value as FontStyle)}
-              className="h-10 w-full border border-input bg-input px-3 font-sans text-sm text-foreground outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/20"
+              className="h-11 w-full rounded-lg border border-input bg-input px-3 font-sans text-sm text-foreground outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/20"
             >
               <option value="sans">Sans</option>
               <option value="serif">Serif</option>
@@ -303,7 +290,7 @@ export default function KeepsakeStudio() {
               id="font-weight"
               value={fontWeight}
               onChange={(event) => setFontWeight(Number(event.target.value))}
-              className="h-10 w-full border border-input bg-input px-3 font-sans text-sm text-foreground outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/20"
+              className="h-11 w-full rounded-lg border border-input bg-input px-3 font-sans text-sm text-foreground outline-none focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/20"
             >
               <option value="400">Regular</option>
               <option value="500">Medium</option>
@@ -343,7 +330,7 @@ export default function KeepsakeStudio() {
 
           <div className="mb-5">
             <label htmlFor="photo" className="mb-2 block font-mono text-[9px] tracking-[0.12em] text-muted-foreground">{photo ? "CHANGE IMAGE" : "YOUR IMAGE"}</label>
-            <label htmlFor="photo" className="group flex min-h-12 cursor-pointer items-center justify-center gap-2 border border-dashed border-border px-3 py-3 font-mono text-[10px] text-foreground transition-colors hover:border-primary">
+            <label htmlFor="photo" className="group flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-lg border border-dashed border-border px-3 py-3 font-mono text-[10px] text-foreground transition-colors hover:border-primary">
               <svg viewBox="0 0 24 24" className="size-4 text-muted-foreground transition-colors group-hover:text-foreground" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true"><path d="M12 16V4m0 0L7 9m5-5 5 5M4 15v5h16v-5" /></svg>
               <span>{photo ? "Choose another image" : "Choose an image"}</span>
               <input ref={fileInputRef} id="photo" type="file" accept="image/jpeg,image/png,image/webp" className="sr-only" onChange={handlePhotoChange} />
@@ -351,7 +338,7 @@ export default function KeepsakeStudio() {
             <p className="mt-2 font-mono text-[9px] tracking-[0.12em] text-muted-foreground">JPG · PNG · WEBP</p>
           </div>
 
-          <Button className="w-full justify-between px-4" onClick={downloadEditedImage} disabled={!photo || !name.trim() || loading}>
+          <Button className="w-full justify-between rounded-lg px-4" onClick={downloadEditedImage} disabled={!photo || !name.trim() || loading}>
             <span>{loading ? "Preparing image…" : "Download edited image"}</span><span aria-hidden="true">↓</span>
           </Button>
           {photo && (
@@ -381,17 +368,17 @@ export default function KeepsakeStudio() {
             <div
               onDragOver={(event) => event.preventDefault()}
               onDrop={handleDrop}
-              className="grid min-h-[340px] place-items-center border border-dashed border-border bg-card p-8 text-center backdrop-blur-[22px] sm:min-h-[460px]"
+              className="grid min-h-[340px] place-items-center rounded-2xl border border-dashed border-white/12 bg-card p-8 text-center shadow-[0_24px_80px_rgba(0,0,0,0.22)] backdrop-blur-[22px] sm:min-h-[460px]"
             >
               <div>
-                <div className="mx-auto mb-4 grid size-12 place-items-center border border-border text-muted-foreground">
+                <div className="mx-auto mb-4 grid size-12 place-items-center rounded-xl border border-white/10 text-primary/80">
                   <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" /><circle cx="8.5" cy="9" r="1.5" /><path d="m20.5 15-5-5L6 19" /></svg>
                 </div>
-                <p className="font-sans text-sm text-foreground">Choose an image to start</p>
+                <p className="font-sans text-sm text-foreground">Drop an image here</p>
               </div>
             </div>
           ) : (
-            <div className="border border-border bg-card p-3 backdrop-blur-[22px] sm:p-5">
+            <div className="rounded-2xl border border-white/10 bg-card p-3 shadow-[0_24px_80px_rgba(0,0,0,0.3)] backdrop-blur-[22px] sm:p-5">
               <div className="mb-3 flex min-w-0 items-center justify-between gap-3 font-mono text-[9px] text-muted-foreground">
                 <span className="truncate" title={photo.file.name}>{photo.file.name}</span>
                 <button type="button" onClick={removePhoto} className="shrink-0 text-muted-foreground transition-colors hover:text-foreground">REMOVE</button>
@@ -407,7 +394,7 @@ export default function KeepsakeStudio() {
                     src={photo.url}
                     alt="Uploaded image with name overlay preview"
                     draggable={false}
-                    className="block max-h-[68vh] max-w-full object-contain"
+                    className="block max-h-[68vh] max-w-full rounded-sm object-contain"
                   />
                   {name.trim() && (
                     <button
