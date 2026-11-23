@@ -1,6 +1,9 @@
 node_modules/
 .next/
-out/
+.astro/
+dist/
 .vercel/
 *.tsbuildinfo
-next-env.d.ts
+.env
+.env.*
+!.env.example
