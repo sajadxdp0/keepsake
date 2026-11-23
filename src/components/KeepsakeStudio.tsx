@@ -223,20 +223,15 @@ export default function KeepsakeStudio() {
     <>
       <KeepsakeBackdrop />
       <main className="relative z-10 mx-auto min-h-screen max-w-6xl px-5 pb-10 sm:px-8">
-      <header className="flex h-[72px] items-center border-b border-white/10">
-        <a href="#top" className="flex items-center gap-3 font-sans text-sm font-medium tracking-tight text-foreground">
+      <header className="flex min-h-[68px] items-center justify-between gap-3 border-b border-white/10 py-3">
+        <a href="#top" className="flex shrink-0 items-center gap-3 font-sans text-sm font-medium tracking-tight text-foreground">
           <img src="/keepsake-mark.svg" width="32" height="32" alt="" className="size-8" />
           <span>Keepsake</span>
         </a>
+        <h1 id="top" className="text-right font-sans text-[11px] font-medium leading-tight tracking-[-0.035em] text-foreground sm:text-sm">
+          Add name to your certificate/image
+        </h1>
       </header>
-
-      <section id="top" className="py-10 sm:py-14">
-        <div>
-          <h1 className="font-sans text-4xl font-medium leading-[1.08] tracking-[-0.05em] text-foreground sm:text-5xl">
-            Add name to your certificate/image
-          </h1>
-        </div>
-      </section>
 
       <section className="grid gap-6 lg:grid-cols-[300px_minmax(0,1fr)]" aria-label="Image editor">
         <aside className="rounded-2xl border border-white/10 bg-card p-5 shadow-[0_24px_80px_rgba(0,0,0,0.3)] backdrop-blur-[22px] sm:p-6">
