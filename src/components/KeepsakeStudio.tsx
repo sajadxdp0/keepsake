@@ -233,7 +233,7 @@ export default function KeepsakeStudio() {
       <section id="top" className="py-10 sm:py-14">
         <div>
           <h1 className="font-sans text-4xl font-medium leading-[1.08] tracking-[-0.05em] text-foreground sm:text-5xl">
-            Add a name to your image.
+            Add name to your certificate/image
           </h1>
         </div>
       </section>
