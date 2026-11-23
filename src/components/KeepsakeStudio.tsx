@@ -219,29 +219,40 @@ export default function KeepsakeStudio() {
   }
 
   return (
-    <main className="mx-auto min-h-screen max-w-6xl px-5 pb-8 sm:px-8">
+      <>
+      <div aria-hidden="true" className="wallpaper-scene">
+        <div className="wallpaper-glow wallpaper-glow-a" />
+        <div className="wallpaper-glow wallpaper-glow-b" />
+        <pre className="wallpaper-ascii">
+{String.raw`       .             .       ·                       .
+                  .                   .
+           /\                  .                 ·
+          /  \        .                 .
+         /    \                   .               
+   _____/______\__________      .
+   \______________________/         
+ ~~~~~~~~~~~ ~~~~~~~~~~~~~~~~ ~~~~~~~~~~~~~~~~~~~~~~
+      ·         .          ·                  .`}
+        </pre>
+      </div>
+    <main className="relative z-10 mx-auto min-h-screen max-w-6xl px-5 pb-8 sm:px-8">
       <header className="flex h-[68px] items-center justify-between border-b border-border">
         <a href="#top" className="flex items-center gap-3 font-sans text-sm font-medium tracking-tight text-foreground">
           <img src="/keepsake-mark.svg" width="32" height="32" alt="" className="size-8" />
           <span>Keepsake</span>
         </a>
-        <span className="font-mono text-[9px] tracking-[0.14em] text-muted-foreground">PRIVATE / LOCAL</span>
       </header>
 
-      <section id="top" className="grid gap-4 py-9 sm:grid-cols-[1fr_auto] sm:items-end sm:py-12">
+      <section id="top" className="py-9 sm:py-12">
         <div>
-          <p className="mb-3 font-mono text-[9px] tracking-[0.16em] text-muted-foreground">A PERSONAL IMAGE EDITOR</p>
           <h1 className="font-sans text-3xl font-medium leading-tight tracking-[-0.045em] text-foreground sm:text-4xl">
-            Put your name<br className="sm:hidden" /> where it belongs.
+            Add a name to your image.
           </h1>
         </div>
-        <p className="max-w-sm font-sans text-xs leading-5 text-muted-foreground">
-          Add text directly to your image. Drag it into place and download the full-resolution result.
-        </p>
       </section>
 
       <section className="grid gap-6 lg:grid-cols-[300px_minmax(0,1fr)]" aria-label="Image editor">
-        <aside className="border border-border bg-card p-5 sm:p-6">
+        <aside className="border border-border bg-card p-5 backdrop-blur-[22px] sm:p-6">
           <div className="mb-6">
             <label htmlFor="name" className="mb-2 block font-mono text-[9px] tracking-[0.12em] text-muted-foreground">NAME</label>
             <Input
@@ -337,7 +348,7 @@ export default function KeepsakeStudio() {
               <span>{photo ? "Choose another image" : "Choose an image"}</span>
               <input ref={fileInputRef} id="photo" type="file" accept="image/jpeg,image/png,image/webp" className="sr-only" onChange={handlePhotoChange} />
             </label>
-            <p className="mt-2 font-sans text-[10px] text-muted-foreground">JPG, PNG, WebP · processed on this device</p>
+            <p className="mt-2 font-mono text-[9px] tracking-[0.12em] text-muted-foreground">JPG · PNG · WEBP</p>
           </div>
 
           <Button className="w-full justify-between px-4" onClick={downloadEditedImage} disabled={!photo || !name.trim() || loading}>
@@ -370,18 +381,17 @@ export default function KeepsakeStudio() {
             <div
               onDragOver={(event) => event.preventDefault()}
               onDrop={handleDrop}
-              className="grid min-h-[340px] place-items-center border border-dashed border-border bg-card p-8 text-center sm:min-h-[460px]"
+              className="grid min-h-[340px] place-items-center border border-dashed border-border bg-card p-8 text-center backdrop-blur-[22px] sm:min-h-[460px]"
             >
               <div>
                 <div className="mx-auto mb-4 grid size-12 place-items-center border border-border text-muted-foreground">
                   <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="1.4" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" /><circle cx="8.5" cy="9" r="1.5" /><path d="m20.5 15-5-5L6 19" /></svg>
                 </div>
                 <p className="font-sans text-sm text-foreground">Choose an image to start</p>
-                <p className="mt-1 font-sans text-xs text-muted-foreground">or drop it here · nothing is uploaded</p>
               </div>
             </div>
           ) : (
-            <div className="border border-border bg-card p-3 sm:p-5">
+            <div className="border border-border bg-card p-3 backdrop-blur-[22px] sm:p-5">
               <div className="mb-3 flex min-w-0 items-center justify-between gap-3 font-mono text-[9px] text-muted-foreground">
                 <span className="truncate" title={photo.file.name}>{photo.file.name}</span>
                 <button type="button" onClick={removePhoto} className="shrink-0 text-muted-foreground transition-colors hover:text-foreground">REMOVE</button>
@@ -428,14 +438,10 @@ export default function KeepsakeStudio() {
               </p>
             </div>
           )}
-          <p className="mt-3 font-sans text-[11px] text-muted-foreground">The source file is never changed. The downloaded PNG keeps its original pixel dimensions.</p>
         </section>
       </section>
 
-      <footer className="mt-10 flex items-center justify-between border-t border-border py-4 font-mono text-[9px] tracking-[0.12em] text-muted-foreground">
-        <span className="flex items-center gap-2"><img src="/keepsake-mark.svg" width="18" height="18" alt="" className="size-[18px]" /> KEEPSAKE</span>
-        <span>LOCAL BY DESIGN</span>
-      </footer>
     </main>
+    </>
   );
 }

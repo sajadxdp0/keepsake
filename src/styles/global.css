@@ -19,16 +19,99 @@
 
 :root {
   color-scheme: dark;
-  --background: #000;
-  --foreground: #fff;
-  --card: #090909;
-  --border: #262626;
-  --input: #070707;
-  --muted: #1a1a1a;
-  --muted-foreground: #7a7a7a;
-  --primary: #8d8d8d;
-  --primary-foreground: #000;
-  --ring: #8d8d8d;
+  --background: #090c10;
+  --foreground: #f4f4f1;
+  --card: rgba(12, 12, 12, 0.62);
+  --border: rgba(255, 255, 255, 0.12);
+  --input: rgba(8, 10, 12, 0.78);
+  --muted: rgba(255, 255, 255, 0.07);
+  --muted-foreground: #a3a3a3;
+  --primary: #d97757;
+  --primary-foreground: #0c0c0c;
+  --ring: #e08566;
+}
+
+.wallpaper-scene {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 16% 16%, rgba(25, 132, 145, 0.22), transparent 36%),
+    radial-gradient(ellipse at 86% 22%, rgba(217, 119, 87, 0.18), transparent 34%),
+    radial-gradient(ellipse at 72% 82%, rgba(45, 212, 191, 0.09), transparent 44%),
+    linear-gradient(145deg, #090c10 0%, #071419 54%, #100d12 100%);
+}
+
+.wallpaper-glow {
+  position: absolute;
+  width: 32rem;
+  aspect-ratio: 1;
+  border: 1px solid rgba(45, 212, 191, 0.12);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4rem rgba(45, 212, 191, 0.015), 0 0 0 8rem rgba(217, 119, 87, 0.012);
+}
+
+.wallpaper-glow-a {
+  top: -24rem;
+  right: -10rem;
+}
+
+.wallpaper-glow-b {
+  bottom: -27rem;
+  left: -18rem;
+  width: 42rem;
+  border-color: rgba(217, 119, 87, 0.12);
+}
+
+.wallpaper-ascii {
+  position: absolute;
+  right: max(3vw, 1rem);
+  bottom: 3rem;
+  margin: 0;
+  color: rgba(224, 133, 102, 0.26);
+  font: 500 clamp(0.68rem, 0.75vw, 0.8rem)/1.55 "JetBrains Mono Variable", monospace;
+  white-space: pre;
+  user-select: none;
+  text-shadow: 0 0 22px rgba(217, 119, 87, 0.12);
+  animation: wallpaper-float 22s ease-in-out infinite;
+}
+
+@keyframes wallpaper-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@media (max-width: 640px) {
+  .wallpaper-ascii {
+    right: 1rem;
+    bottom: 1rem;
+    opacity: 0.6;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .wallpaper-ascii {
+    animation: none;
+  }
+}
+
+:focus-visible {
+  outline: 1px solid var(--ring);
+  outline-offset: 3px;
+}
+
+input[type="range"] {
+  accent-color: var(--primary);
+}
+
+input[type="color"] {
+  color-scheme: dark;
 }
 
 * {
@@ -50,7 +133,6 @@ body {
 }
 
 ::selection {
-  background: #1a1a1a;
+  background: rgba(217, 119, 87, 0.38);
   color: #fff;
 }
-
