@@ -9,18 +9,18 @@ export default function KeepsakeBackdrop() {
       >
         <defs>
           <radialGradient id="keepsake-halo">
-            <stop offset="0" stopColor="#d97757" stopOpacity="0.2" />
-            <stop offset="0.4" stopColor="#d97757" stopOpacity="0.07" />
-            <stop offset="1" stopColor="#d97757" stopOpacity="0" />
+            <stop offset="0" stopColor="#ffffff" stopOpacity="0.24" />
+            <stop offset="0.4" stopColor="#ffffff" stopOpacity="0.08" />
+            <stop offset="1" stopColor="#ffffff" stopOpacity="0" />
           </radialGradient>
           <radialGradient id="keepsake-core-glow">
-            <stop offset="0" stopColor="#f2b69b" stopOpacity="0.85" />
-            <stop offset="0.42" stopColor="#d97757" stopOpacity="0.28" />
-            <stop offset="1" stopColor="#d97757" stopOpacity="0" />
+            <stop offset="0" stopColor="#ffffff" stopOpacity="0.95" />
+            <stop offset="0.42" stopColor="#d4d4d4" stopOpacity="0.3" />
+            <stop offset="1" stopColor="#ffffff" stopOpacity="0" />
           </radialGradient>
           <pattern id="keepsake-glyphs" width="32" height="32" patternUnits="userSpaceOnUse">
-            <text x="2" y="12" fill="#e2896b" fontFamily="monospace" fontSize="10">· + .</text>
-            <text x="10" y="28" fill="#d97757" fontFamily="monospace" fontSize="10">: * ·</text>
+            <text x="2" y="12" fill="#f1f1f1" fontFamily="monospace" fontSize="10">· + .</text>
+            <text x="10" y="28" fill="#aaaaaa" fontFamily="monospace" fontSize="10">: * ·</text>
           </pattern>
           <mask id="keepsake-sun-mask" maskUnits="userSpaceOnUse" x="-250" y="-250" width="500" height="500">
             <rect x="-250" y="-250" width="500" height="500" fill="black" />
@@ -43,11 +43,11 @@ export default function KeepsakeBackdrop() {
         </defs>
 
         <circle r="240" fill="url(#keepsake-halo)" />
-        <circle r="174" fill="none" stroke="#d97757" strokeOpacity="0.08" />
-        <circle r="112" fill="none" stroke="#e2896b" strokeOpacity="0.08" />
+        <circle r="174" fill="none" stroke="#ffffff" strokeOpacity="0.07" />
+        <circle r="112" fill="none" stroke="#d4d4d4" strokeOpacity="0.07" />
         <g className="keepsake-ray-field">
           <rect x="-250" y="-250" width="500" height="500" fill="url(#keepsake-glyphs)" mask="url(#keepsake-sun-mask)" />
-          <g fill="#e2896b" fillOpacity="0.32" shapeRendering="crispEdges">
+          <g fill="#f1f1f1" fillOpacity="0.32" shapeRendering="crispEdges">
             <path d="M-2-38h4v14h-4zm-2-28h8v18h-8zm1-34h6v22h-6zm-3-39h10v28h-10zm2-50h6v38h-6z" />
             <path d="M-2-38h4v18h-4zm-1-30h6v20h-6zm-3-40h10v26h-10zm2-47h6v36h-6z" transform="rotate(25.2)" />
             <path d="M-2-38h4v14h-4zm-2-28h8v18h-8zm1-34h6v22h-6zm-3-39h10v28h-10zm2-50h6v38h-6z" transform="rotate(60.8)" />
@@ -65,7 +65,7 @@ export default function KeepsakeBackdrop() {
         <circle className="keepsake-core-glow" r="56" fill="url(#keepsake-core-glow)" />
         <path
           d="M-18-18h12v12h-12zm18 0h12v12H0zm-18 18h12v12h-12zm18 0h12v12H0zm-9-9h12v12h-12z"
-          fill="#e9a184"
+          fill="#ffffff"
           fillOpacity="0.78"
           shapeRendering="crispEdges"
         />

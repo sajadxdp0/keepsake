@@ -4,7 +4,7 @@ An Astro + React image editor using the Omarchy Vantablack palette. Add a name d
 
 ## Background
 
-`KeepsakeBackdrop.tsx` renders the warm ASCII sunburst as inline SVG; CSS drives its subtle motion and disables animation for reduced-motion preferences.
+`KeepsakeBackdrop.tsx` renders the monochrome ASCII sunburst as inline SVG; CSS drives its subtle motion and disables animation for reduced-motion preferences.
 
 ## Run locally
 
