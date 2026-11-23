@@ -1,6 +1,6 @@
 # Buildathon Keepsake Studio
 
-A small static site for creating a personal, unofficial Buildathon keepsake. It does not overlay or alter an event-issued certificate; the exported PNG is a separate commemorative design with an explicit unofficial label. Names stay in the browser.
+A small static site for creating a personal, unofficial Buildathon keepsake. Optional certificate photos are previewed and downloaded unchanged; the entered name appears only on a separate commemorative design with an explicit unofficial label. Names and images stay in the browser.
 
 ## Run locally
 

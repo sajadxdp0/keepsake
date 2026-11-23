@@ -3,6 +3,12 @@ const previewName = document.querySelector('#preview-name');
 const count = document.querySelector('#count');
 const downloadButton = document.querySelector('#download');
 const MAX_NAME_LENGTH = 42;
+const certificateInput = document.querySelector('#certificate');
+const sourcePreview = document.querySelector('#source-preview');
+const sourceImage = document.querySelector('#source-image');
+const sourceFilename = document.querySelector('#source-filename');
+const downloadOriginalButton = document.querySelector('#download-original');
+let originalPhotoUrl;
 
 function updatePreview() {
   const name = input.value.trim() || 'Your Name';
@@ -59,6 +65,32 @@ async function downloadKeepsake() {
   image.onerror = () => URL.revokeObjectURL(url);
   image.src = url;
 }
+
+function previewOriginalPhoto() {
+  const file = certificateInput.files[0];
+  if (!file) return;
+  if (originalPhotoUrl) URL.revokeObjectURL(originalPhotoUrl);
+  originalPhotoUrl = URL.createObjectURL(file);
+  sourceImage.src = originalPhotoUrl;
+  sourceFilename.textContent = file.name;
+  sourcePreview.hidden = false;
+}
+
+function downloadOriginalPhoto() {
+  const file = certificateInput.files[0];
+  if (!file || !originalPhotoUrl) return;
+  const link = document.createElement('a');
+  link.href = originalPhotoUrl;
+  link.download = file.name;
+  link.click();
+}
+
+window.addEventListener('pagehide', () => {
+  if (originalPhotoUrl) URL.revokeObjectURL(originalPhotoUrl);
+});
+
+certificateInput.addEventListener('change', previewOriginalPhoto);
+downloadOriginalButton.addEventListener('click', downloadOriginalPhoto);
 
 input.addEventListener('input', updatePreview);
 downloadButton.addEventListener('click', downloadKeepsake);

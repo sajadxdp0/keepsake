@@ -31,11 +31,22 @@
           <label for="name">Name to celebrate</label>
           <input id="name" name="name" type="text" maxlength="42" autocomplete="name" placeholder="e.g. Aanya Sharma" value="Your Name">
           <div class="field-foot"><span>As you’d like it to appear</span><span id="count">9 / 42</span></div>
+          <label class="upload-label" for="certificate">Your certificate photo <span>OPTIONAL</span></label>
+          <label class="upload-zone" for="certificate">
+            <span class="upload-symbol" aria-hidden="true">↑</span>
+            <span><strong>Choose a photo</strong><small>JPG, PNG or WebP · stays on your device</small></span>
+            <input id="certificate" type="file" accept="image/*">
+          </label>
+          <section class="source-preview" id="source-preview" aria-label="Unchanged uploaded photo" hidden>
+            <div class="source-heading"><span>ORIGINAL PHOTO · UNCHANGED</span><span id="source-filename"></span></div>
+            <img id="source-image" alt="Your uploaded certificate photo, shown unchanged">
+            <button class="download-original" id="download-original" type="button">Download original photo <span aria-hidden="true">↗</span></button>
+          </section>
           <div class="divider"></div>
           <div class="event-detail"><span class="detail-icon">✳</span><p><strong>Cashfree × Sarvam AI Buildathon</strong><br>21 November 2026 · Bengaluru</p></div>
-          <div class="note"><span aria-hidden="true">ⓘ</span><p>This is a personal, unofficial keepsake—not an event-issued certificate or proof of participation.</p></div>
+          <div class="note"><span aria-hidden="true">ⓘ</span><p>Your photo stays unchanged. The name appears only on a separate unofficial keepsake—not on the certificate.</p></div>
           <button id="download" class="download" type="button"><span>Download keepsake</span><span aria-hidden="true">↓</span></button>
-          <p class="privacy">Made in your browser. Your name is never uploaded.</p>
+          <p class="privacy">Made in your browser. Your name and photo are never uploaded.</p>
         </div>
 
         <div class="preview-wrap">
