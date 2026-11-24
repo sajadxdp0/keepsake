@@ -13,7 +13,7 @@
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-ring: var(--ring);
-  --font-sans: "Geist Variable", sans-serif;
+  --font-sans: "JetBrains Mono Variable", monospace;
   --font-mono: "JetBrains Mono Variable", monospace;
 }
 
@@ -38,59 +38,16 @@
   overflow: hidden;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at 73% 26%, rgba(255, 255, 255, 0.09), transparent 38%),
+    radial-gradient(ellipse 36rem 30rem at 82% 12%, rgba(255, 255, 255, 0.095), transparent 70%),
+    radial-gradient(ellipse 30rem 22rem at 16% 92%, rgba(255, 255, 255, 0.035), transparent 72%),
     #020202;
 }
 
-.keepsake-burst {
-  position: absolute;
-  top: -8rem;
-  right: -5rem;
-  width: min(50vw, 36rem);
-  height: auto;
-  opacity: 0.74;
-}
-
-.keepsake-ray-field {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: keepsake-orbit 96s linear infinite;
-}
-
-.keepsake-core-glow {
-  animation: keepsake-breathe 8s ease-in-out infinite;
-}
-
-.keepsake-vignette {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 76% 22%, transparent 0%, rgba(0, 0, 0, 0.12) 42%, rgba(0, 0, 0, 0.62) 100%),
-    linear-gradient(180deg, transparent 48%, rgba(0, 0, 0, 0.46));
-}
-
-@keyframes keepsake-orbit {
-  to { transform: rotate(360deg); }
-}
-
-@keyframes keepsake-breathe {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 0.88; }
-}
-
 @media (max-width: 640px) {
-  .keepsake-burst {
-    top: 0.5rem;
-    right: -12vw;
-    width: min(100vw, 34rem);
-    opacity: 0.52;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .keepsake-ray-field,
-  .keepsake-core-glow {
-    animation: none;
+  .keepsake-backdrop {
+    background:
+      radial-gradient(ellipse 26rem 22rem at 85% 15%, rgba(255, 255, 255, 0.08), transparent 72%),
+      #020202;
   }
 }
 
@@ -121,7 +78,7 @@ body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: "Geist Variable", ui-sans-serif, sans-serif;
+  font-family: "JetBrains Mono Variable", monospace;
   -webkit-font-smoothing: antialiased;
 }
 

@@ -4,7 +4,7 @@ An Astro + React image editor using the Omarchy Vantablack palette. Add a name d
 
 ## Background
 
-`KeepsakeBackdrop.tsx` renders the monochrome ASCII sunburst as inline SVG; CSS drives its subtle motion and disables animation for reduced-motion preferences.
+`KeepsakeBackdrop.tsx` provides a static black backdrop with restrained white ambient light. The site uses JetBrains Mono as its interface typeface; the image editor retains selectable typefaces for the name added to an image.
 
 ## Run locally
 
